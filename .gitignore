@@ -1,0 +1,14 @@
+# Logs
+sqlnet.log
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE configs
+.idea/
+.vscode/
+*.suo
+*.user

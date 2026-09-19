@@ -1,0 +1,710 @@
+/* css/customer.css — Customer / Public Portal Styles */
+
+/* === Customer Navbar === */
+.customer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.customer-nav-brand {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.customer-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.customer-nav-link {
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all var(--transition);
+}
+.customer-nav-link:hover,
+.customer-nav-link.active {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+/* === Hero Banner === */
+.customer-hero {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #1e2d3a 100%);
+    padding: 60px 40px;
+    text-align: center;
+    color: #fff;
+}
+
+.customer-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.customer-hero p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 500px;
+    margin: 0 auto 24px;
+}
+
+/* === Customer Page Wrapper === */
+.customer-page {
+    min-height: 100vh;
+    background: var(--bg-main);
+}
+
+.customer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* === Tournament Card === */
+.tournament-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+.tournament-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.tournament-card-header {
+    background: var(--primary);
+    padding: 20px;
+    color: #fff;
+}
+
+.tournament-card-body {
+    padding: 20px;
+}
+
+.tournament-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.tournament-card-sport {
+    font-size: 0.8rem;
+    opacity: 0.85;
+}
+
+.tournament-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tournament-card-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+/* === Seat Grid === */
+.seat-grid-wrapper {
+    background: var(--bg-table-header);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+.seat-grid-screen {
+    background: var(--primary);
+    color: #fff;
+    text-align: center;
+    padding: 8px;
+    border-radius: var(--radius);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+
+.seat-legend {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 0.78rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+}
+
+.seat-box {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid currentColor;
+}
+
+.seat-box.available { background: #fff; color: var(--border); }
+.seat-box.selected  { background: var(--primary); color: var(--primary); }
+.seat-box.occupied  { background: #dee2e6; color: #dee2e6; }
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 6px;
+}
+
+.seat-btn {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1.5px solid var(--border);
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seat-btn:hover:not(.occupied) {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.seat-btn.selected {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+.seat-btn.occupied {
+    background: #dee2e6;
+    border-color: #dee2e6;
+    color: #adb5bd;
+    cursor: not-allowed;
+}
+
+/* === Match card on home page === */
+.match-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    transition: box-shadow var(--transition);
+}
+.match-card:hover { box-shadow: var(--shadow); }
+
+.match-team {
+    text-align: center;
+    flex: 1;
+}
+
+.match-team-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.match-team-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.8rem;
+    margin: 0 auto 8px;
+}
+
+.match-vs {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    padding: 0 12px;
+}
+
+.match-info {
+    text-align: center;
+    flex: 1.5;
+}
+
+/* Customer footer */
+.customer-footer {
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.78rem;
+    margin-top: 40px;
+}
+
+/* =============================================
+   PAYMENT / CHECKOUT PAGE (Figma exact match)
+   ============================================= */
+.checkout-page {
+    min-height: 100vh;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-topbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.checkout-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.checkout-back-link:hover {
+    color: #1b5e20;
+}
+
+.checkout-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.checkout-secure-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #475569;
+}
+
+.checkout-container {
+    max-width: 1180px;
+    width: 100%;
+    margin: 36px auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 28px;
+    flex: 1;
+    align-items: start;
+}
+
+@media (max-width: 960px) {
+    .checkout-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.checkout-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.checkout-card + .checkout-card {
+    margin-top: 20px;
+}
+
+.checkout-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 20px;
+}
+
+/* Payment Method Selection Grid */
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 600px) {
+    .payment-methods-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.payment-method-item {
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    user-select: none;
+    text-align: center;
+}
+
+.payment-method-item:hover {
+    border-color: #1b5e20;
+    box-shadow: 0 4px 12px rgba(27, 94, 32, 0.08);
+    transform: translateY(-2px);
+}
+
+.payment-method-item.active {
+    border-color: #1b5e20;
+    background: #f0fdf4;
+    box-shadow: 0 0 0 2px rgba(27, 94, 32, 0.2);
+}
+
+.payment-method-logo {
+    width: 52px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+.payment-method-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Payment Form Fields */
+.payment-field-group {
+    margin-bottom: 16px;
+}
+
+.payment-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.payment-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.payment-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: #0f172a;
+    background: #ffffff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.payment-input:focus {
+    outline: none;
+    border-color: #1b5e20;
+    box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.12);
+}
+
+.payment-input-icon {
+    position: absolute;
+    right: 14px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.payment-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.save-card-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #475569;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+.save-card-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #1b5e20;
+    cursor: pointer;
+}
+
+/* Booking Summary Card */
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.summary-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.summary-section {
+    margin-bottom: 16px;
+}
+
+.summary-meta-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.summary-tournament-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.35;
+}
+
+.summary-details-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+    padding-bottom: 14px;
+}
+
+.summary-detail-val {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.summary-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 16px 0;
+}
+
+.summary-line-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.86rem;
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.summary-line-item span:last-child {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.total-amount-container {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.total-amount-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.total-amount-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #166534;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.btn-confirm-payment {
+    width: 100%;
+    padding: 14px;
+    background: #1b5e20;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.98rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(27, 94, 32, 0.25);
+    transition: background 0.15s, transform 0.15s;
+}
+
+.btn-confirm-payment:hover {
+    background: #144716;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(27, 94, 32, 0.35);
+}
+
+.payment-terms-notice {
+    font-size: 0.74rem;
+    color: #64748b;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 1.4;
+}
+
+.payment-terms-notice a {
+    color: #1b5e20;
+    text-decoration: underline;
+}
+
+/* Help Box */
+.checkout-help-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.help-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #334155;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.help-text-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.help-text-desc {
+    font-size: 0.78rem;
+    color: #64748b;
+}
+
+/* Footer */
+.checkout-footer {
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: #64748b;
+    margin-top: auto;
+}
+
+@media (max-width: 768px) {
+    .checkout-footer {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Success Modal / Card */
+.payment-success-card {
+    background: #ffffff;
+    border: 1px solid #bbf7d0;
+    border-radius: 14px;
+    padding: 36px 30px;
+    text-align: center;
+    max-width: 540px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(22, 101, 52, 0.08);
+}
+
+.success-icon-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #166534;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+}
+
+.receipt-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 18px;
+    margin: 20px 0;
+    text-align: left;
+}

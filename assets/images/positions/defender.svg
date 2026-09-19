@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <circle cx="50" cy="50" r="46" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="2.5"/>
+  <!-- Head -->
+  <circle cx="50" cy="21" r="7.5" fill="#ffffff"/>
+  <!-- Broad Shoulders and Torso -->
+  <path d="M 33 34 C 33 30 67 30 67 34 L 64 64 L 36 64 Z" fill="#ffffff"/>
+  <!-- Arms resting strong / flexed at sides -->
+  <path d="M 34 35 L 23 48 L 26 58 L 31 56 L 28 49 L 36 38 Z" fill="#ffffff"/>
+  <path d="M 66 35 L 77 48 L 74 58 L 69 56 L 72 49 L 64 38 Z" fill="#ffffff"/>
+  <!-- Protective Shield Crest Badge on Right Arm -->
+  <path d="M 75 52 L 85 52 C 85 62 75 66 75 66 C 75 66 65 62 65 52 Z" fill="#ffffff" opacity="0.95"/>
+  <!-- Shorts -->
+  <path d="M 36 64 L 64 64 L 67 79 L 53 79 L 50 73 L 47 79 L 33 79 Z" fill="#ffffff"/>
+  <!-- Legs planted firmly -->
+  <rect x="37" y="79" width="7" height="12" rx="3.5" fill="#ffffff"/>
+  <rect x="56" y="79" width="7" height="12" rx="3.5" fill="#ffffff"/>
+  <!-- Jersey Number Slot -->
+  
+</svg>

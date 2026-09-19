@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <circle cx="50" cy="50" r="46" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="2.5"/>
+  <!-- Head -->
+  <circle cx="50" cy="22" r="7" fill="#ffffff"/>
+  <!-- Raised Arms with Gloves -->
+  <path d="M 40 35 L 26 22 L 20 15 C 18 12 24 10 27 14 L 33 22 L 40 30 Z" fill="#ffffff"/>
+  <path d="M 60 35 L 74 22 L 80 15 C 82 12 76 10 73 14 L 67 22 L 60 30 Z" fill="#ffffff"/>
+  <!-- Glove Fingers Details -->
+  <circle cx="21" cy="14" r="3.5" fill="#ffffff"/>
+  <circle cx="79" cy="14" r="3.5" fill="#ffffff"/>
+  <!-- Jersey / Torso -->
+  <path d="M 37 34 L 63 34 L 61 64 L 39 64 Z" fill="#ffffff"/>
+  <!-- Shorts -->
+  <path d="M 39 64 L 61 64 L 64 78 L 52 78 L 50 72 L 48 78 L 36 78 Z" fill="#ffffff"/>
+  <!-- Legs -->
+  <rect x="40" y="78" width="6" height="12" rx="3" fill="#ffffff"/>
+  <rect x="54" y="78" width="6" height="12" rx="3" fill="#ffffff"/>
+  <!-- Jersey Number Slot -->
+  
+</svg>
