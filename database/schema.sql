@@ -158,6 +158,8 @@ CREATE TABLE MATCHES (
     Result         VARCHAR2(100),
     HomeScore      INT DEFAULT 0,
     AwayScore      INT DEFAULT 0,
+    Score          VARCHAR2(50),
+    MatchType      VARCHAR2(50) DEFAULT 'Group Stage',
     TournamentID   INT NOT NULL,
     VenueID        INT NOT NULL,
     HomeTeamID     INT NOT NULL,
