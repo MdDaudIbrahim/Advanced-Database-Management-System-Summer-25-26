@@ -13,8 +13,12 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 require_once __DIR__ . '/../../config/db.php';
 $conn = getOracleConnection();
 
+// ── Flash Messages (PRG Pattern) ──────────────────
+$successMsg = $_SESSION['flash_success'] ?? '';
+$errorMsg   = $_SESSION['flash_error'] ?? '';
+unset($_SESSION['flash_success'], $_SESSION['flash_error']);
+
 // ── Handle Delete Tournament ──────────────────────
-$successMsg = ''; $errorMsg = '';
 if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action_delete'])) {
     $delId = intval($_POST['tournament_id'] ?? 0);
     if ($delId > 0) {
@@ -33,11 +37,13 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action_delete
         // Delete tournament
         $ok = oracleExecute($conn, "DELETE FROM TOURNAMENT WHERE TOURNAMENTID = :tid", ['tid' => $delId]);
         if ($ok) {
-            $successMsg = "Tournament #{$delId} and its associated matches were deleted successfully.";
+            $_SESSION['flash_success'] = "Tournament #{$delId} and its associated matches were deleted successfully.";
         } else {
-            $errorMsg = "Could not delete tournament #{$delId}.";
+            $_SESSION['flash_error'] = "Could not delete tournament #{$delId}.";
         }
     }
+    header('Location: ' . BASE_URL . 'views/admin/tournaments.php');
+    exit();
 }
 
 // ── Handle Update Tournament ──────────────────────
@@ -72,13 +78,15 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action_update
             'tid'      => $editId
         ]);
         if ($ok) {
-            $successMsg = "Tournament '{$name}' updated successfully!";
+            $_SESSION['flash_success'] = "Tournament '{$name}' updated successfully!";
         } else {
-            $errorMsg = "Failed to update tournament. Please check the values.";
+            $_SESSION['flash_error'] = "Failed to update tournament. Please check the values.";
         }
     } else {
-        $errorMsg = "Please fill in all required fields to update.";
+        $_SESSION['flash_error'] = "Please fill in all required fields to update.";
     }
+    header('Location: ' . BASE_URL . 'views/admin/tournaments.php');
+    exit();
 }
 
 // ── Handle Create Tournament ──────────────────────
@@ -103,11 +111,16 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST' && isset($_POST['action_create
             'maxteams' => $maxTeams,
             'prize'    => $prize
         ]);
-        if ($ok) $successMsg = 'Tournament created successfully!';
-        else $errorMsg = 'Could not create tournament. Please try again.';
+        if ($ok) {
+            $_SESSION['flash_success'] = 'Tournament created successfully!';
+        } else {
+            $_SESSION['flash_error'] = 'Could not create tournament. Please try again.';
+        }
     } else {
-        $errorMsg = 'Please fill all required fields.';
+        $_SESSION['flash_error'] = 'Please fill all required fields.';
     }
+    header('Location: ' . BASE_URL . 'views/admin/tournaments.php');
+    exit();
 }
 
 // ── KPI Stats ──────────────────────────────────────

@@ -342,6 +342,7 @@ INSERT INTO TOURNAMENT VALUES (seq_tournament.NEXTVAL, 'Inter-University Cricket
 INSERT INTO TOURNAMENT VALUES (seq_tournament.NEXTVAL, 'Premier Football Cup 2026', TO_DATE('2026-10-01','YYYY-MM-DD'), TO_DATE('2026-11-15','YYYY-MM-DD'), 200000, 'Football', 'Main Campus Field', 12);
 INSERT INTO TOURNAMENT VALUES (seq_tournament.NEXTVAL, 'National Inter-College Basketball Meet', TO_DATE('2026-11-01','YYYY-MM-DD'), TO_DATE('2026-11-20','YYYY-MM-DD'), 100000, 'Basketball', 'Indoor Gymnasium', 6);
 INSERT INTO TOURNAMENT VALUES (seq_tournament.NEXTVAL, 'Summer Badminton Championship', TO_DATE('2026-08-01','YYYY-MM-DD'), TO_DATE('2026-08-15','YYYY-MM-DD'), 50000, 'Badminton', 'Sports Hall B', 8);
+INSERT INTO TOURNAMENT VALUES (seq_tournament.NEXTVAL, 'JAPAN VS USA', TO_DATE('2026-09-29','YYYY-MM-DD'), TO_DATE('2026-09-30','YYYY-MM-DD'), 25000, 'Football', 'USA', 11);
 
 -- TEAMS
 INSERT INTO TEAM VALUES (seq_team.NEXTVAL, 'Dhaka Gladiators', 'Cricket', 'Cricket', 'Dhaka', TO_DATE('2026-08-10','YYYY-MM-DD'), 102, 401);

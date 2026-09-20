@@ -103,14 +103,22 @@ function syncToOracleXE($sql, $binds = []) {
         } elseif (is_numeric($val)) {
             $rep = $val;
         } elseif (is_string($val) && preg_match('/^\d{4}-\d{2}-\d{2}$/', $val)) {
-            $rep = "TO_DATE('" . $val . "', 'YYYY-MM-DD')";
+            // If already wrapped in TO_DATE in SQL, don't double-wrap
+            if (preg_match('/TO_DATE\s*\(\s*:' . preg_quote($cleanKey, '/') . '\b/i', $oracleSql)) {
+                $rep = "'" . $val . "'";
+            } else {
+                $rep = "TO_DATE('" . $val . "', 'YYYY-MM-DD')";
+            }
         } else {
             $rep = "'" . str_replace("'", "''", (string)$val) . "'";
         }
         $oracleSql = preg_replace('/:' . preg_quote($cleanKey, '/') . '\b/i', $rep, $oracleSql);
     }
 
-    // Automatically convert any bare 'YYYY-MM-DD' date literal for Oracle
+    // Clean up any double TO_DATE(TO_DATE('YYYY-MM-DD', ...), ...)
+    $oracleSql = preg_replace('/TO_DATE\s*\(\s*TO_DATE\s*\(\s*(\'[^\']+\')\s*,\s*\'[^\']+\'\s*\)\s*,\s*\'[^\']+\'\s*\)/i', "TO_DATE($1, 'YYYY-MM-DD')", $oracleSql);
+
+    // Automatically convert any remaining bare 'YYYY-MM-DD' date literal for Oracle
     $oracleSql = preg_replace("/(?<!TO_DATE\()'(20\d{2}-\d{2}-\d{2})'/i", "TO_DATE('$1', 'YYYY-MM-DD')", $oracleSql);
 
     $oracleSql = trim($oracleSql);
