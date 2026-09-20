@@ -184,7 +184,16 @@ if (!function_exists('oci_connect')) {
                 $res = $stmt->execute();
                 $statement->stmt = $stmt;
                 if ($res && preg_match('/^\s*(INSERT|UPDATE|DELETE)\b/i', $statement->sql)) {
-                    syncToOracleXE($statement->sql, $statement->binds);
+                    $syncSql = $statement->sql;
+                    if (preg_match('/^\s*INSERT\b/i', $syncSql)) {
+                        try {
+                            $lastId = $statement->pdo->lastInsertId();
+                            if ($lastId && is_numeric($lastId)) {
+                                $syncSql = preg_replace('/seq_\w+\.NEXTVAL/i', $lastId, $syncSql);
+                            }
+                        } catch (Exception $e) {}
+                    }
+                    syncToOracleXE($syncSql, $statement->binds);
                 }
                 return true;
             } catch (PDOException $e) {
@@ -335,7 +344,16 @@ function oracleExecute($conn, $sql, $binds = []) {
             }
             $res = $stmt->execute();
             if ($res) {
-                syncToOracleXE($sql, $binds);
+                $syncSql = $sql;
+                if (preg_match('/^\s*INSERT\b/i', $syncSql)) {
+                    try {
+                        $lastId = $conn->lastInsertId();
+                        if ($lastId && is_numeric($lastId)) {
+                            $syncSql = preg_replace('/seq_\w+\.NEXTVAL/i', $lastId, $syncSql);
+                        }
+                    } catch (Exception $e) {}
+                }
+                syncToOracleXE($syncSql, $binds);
             }
             return $res;
         } catch (PDOException $e) {
